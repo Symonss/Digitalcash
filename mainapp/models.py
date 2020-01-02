@@ -36,6 +36,7 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date='publish')
     author = models.ForeignKey(User, on_delete = models.CASCADE, related_name='my_posts')
+    bardge= models.CharField(max_length = 40)
     category = models.ForeignKey(Category, on_delete = models.PROTECT, related_name = 'entries', default = '1')
     description = models.TextField()
     keywords = models.CharField(max_length = 400)
@@ -43,6 +44,7 @@ class Post(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
     class Meta:

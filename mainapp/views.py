@@ -9,6 +9,10 @@ def home(request):
     posts = Post.published.all()[:15]
     return render(request, 'home.html', {'posts':posts})
 
+def index(request):
+    posts = Post.published.all()[:15]
+    return render(request, 'index.html', {'posts':posts})
+
 def post_detail_view(request,post):
     post = get_object_or_404(Post, slug=post, status='published')
     print(post)
