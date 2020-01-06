@@ -36,7 +36,6 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date='publish')
     author = models.ForeignKey(User, on_delete = models.CASCADE, related_name='my_posts')
-    bardge= models.CharField(max_length = 40)
     category = models.ForeignKey(Category, on_delete = models.PROTECT, related_name = 'entries', default = '1')
     description = models.TextField()
     keywords = models.CharField(max_length = 400)
@@ -63,3 +62,47 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail_view', args=[self.slug])
+
+
+# Our Opportunity Model
+class Opportunity(models.Model):
+    STATUS_CHOICES = (
+        ('inreview', 'Inreview'),
+        ('approved', 'Approved'),
+        ('rejected', 'Rejected'),
+    )
+
+    TYPE_CHOICES = (
+        ('free', 'Free'),
+        ('paid', 'Paid'),
+    )
+
+    title = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250, unique_for_date='publish')
+    author = models.ForeignKey(User, on_delete = models.CASCADE, related_name='my_opps')
+    least_amount= models.CharField(max_length = 40)
+    description = models.TextField()
+    keywords = models.CharField(max_length = 400)
+    body = RichTextUploadingField()
+    publish = models.DateTimeField(default=timezone.now)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    types = models.CharField(max_length=10, choices=TYPE_CHOICES, default='free')
+
+    class Meta:
+        ordering = ('-publish',)
+
+    def __str__(self):
+        return self.title
+
+        # The default manager
+    objects = models.Manager()
+
+    # Custom made manager
+    published = PublishedManager()
+
+
+
+    def get_absolute_url(self):
+        return reverse('opportunity_detail_view', args=[self.slug])

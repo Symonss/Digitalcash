@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Category
+from .models import Post, Category, Opportunity
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug']
@@ -18,3 +18,16 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ['status', '-publish']
 
 admin.site.register(Post, PostAdmin)
+
+
+
+class OpportunityAdmin(admin.ModelAdmin):
+    list_display = ('title','slug','author','status','created')
+    list_filter = ('status','created','publish','author')
+    search_fields = ('title','author')
+    prepopulated_fields = {'slug': ('title',)}
+    raw_id_fields = ('author',)
+    date_hierarchy = 'publish'
+    ordering = ['types', '-publish']
+
+admin.site.register(Opportunity, OpportunityAdmin)

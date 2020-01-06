@@ -9,7 +9,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('opportunities', views.post_list, name='opportunities_list'),
     path('index', views.index, name = 'index'),
-    url(r'^opportunities/(?P<post>[-\w]+)/$', views.post_detail_view, name='opportunity_detail_view'),
+    url(r'^opportunities/(?P<opp>[-\w]+)/$', views.opportunity_detail_view, name='opportunity_detail_view'),
+    url(r'^stories/(?P<post>[-\w]+)/$', views.post_detail_view, name='story_detail_view'),
     
 ]
 
