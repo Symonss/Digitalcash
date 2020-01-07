@@ -23,7 +23,7 @@ class Category(models.Model):
 # Custom Manager
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super(PublishedManager,self).get_queryset().filter(status='published')
+        return super(PublishedManager,self).get_queryset().filter(status='approved')
 
 
 # Our Post Model
@@ -56,7 +56,7 @@ class Post(models.Model):
     objects = models.Manager()
 
     # Custom made manager
-    published = PublishedManager()
+    approved = PublishedManager()
 
 
 
@@ -84,6 +84,7 @@ class Opportunity(models.Model):
     description = models.TextField()
     keywords = models.CharField(max_length = 400)
     body = RichTextUploadingField()
+    direct_link = models.CharField(max_length = 200, default = 'https://omborisymons.com')
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

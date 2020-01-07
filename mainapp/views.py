@@ -6,14 +6,13 @@ from django.views import View
 
 
 def home(request):
-    posts = Post.published.all()[:15]
-    return render(request, 'home.html', {'posts': posts})
-
-
-def index(request):
-    posts = Post.published.all()[:15]
-    return render(request, 'index.html', {'posts': posts})
-
+    opps = Opportunity.published.all()
+    stories = Post.approved.all()[:6]
+    context={
+        'opps': opps,
+        'stories': stories
+    }
+    return render(request, 'index.html', context)
 
 def post_detail_view(request, post):
     post = get_object_or_404(Post, slug=post, status='published')
