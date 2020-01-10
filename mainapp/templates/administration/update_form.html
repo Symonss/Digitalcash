@@ -1,0 +1,40 @@
+{% extends 'administration/admin_base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block contents %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card ml-1">
+            <div class="card-header ">
+                <h5 class="card-title">Add an Opportunity</h5>
+
+            </div>
+            <div class="card-body ml-5 ">
+
+                <div class="row">
+                    <div class="col-md-8 col-sm-10 col-12">
+
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {{ form.media }}
+                            <input type="hidden" name="next" value="{{ next }}">
+                            {{ form|crispy }}
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    <i class="fa fa-history"></i> Updated
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contents %}

@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'mainapp',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'mainapp.context_processors.categories',
             ],
         },
     },
@@ -91,6 +93,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

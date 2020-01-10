@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.html import mark_safe
 from markdown import markdown
+from django.utils.text import slugify
 
 
 class Category(models.Model):
@@ -14,6 +15,11 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Category, self).save(*args, **kwargs)
+
 
     def get_total_posts(self):
         tt = Post.objects.filter(category = self.pk).count()
@@ -39,12 +45,13 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete = models.PROTECT, related_name = 'entries', default = '1')
     description = models.TextField()
     keywords = models.CharField(max_length = 400)
-    body = RichTextUploadingField()
+    img = models.ImageField(upload_to='images/', null = True, blank=True) 
+    body = RichTextUploadingField(null=True, blank = True)
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='inreview')
 
     class Meta:
         ordering = ('-publish',)
@@ -80,15 +87,17 @@ class Opportunity(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date='publish')
     author = models.ForeignKey(User, on_delete = models.CASCADE, related_name='my_opps')
-    least_amount= models.CharField(max_length = 40)
+    least_amount= models.CharField(max_length = 40, null = True, blank= True)
     description = models.TextField()
     keywords = models.CharField(max_length = 400)
-    body = RichTextUploadingField()
+    category = models.ForeignKey(Category, on_delete = models.PROTECT, related_name = 'opps', default = '1')
+    body = RichTextUploadingField(null = True, blank = True)
     direct_link = models.CharField(max_length = 200, default = 'https://omborisymons.com')
     publish = models.DateTimeField(default=timezone.now)
+    img = models.ImageField(upload_to='images/',null = True, blank = True) 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='inreview')
     types = models.CharField(max_length=10, choices=TYPE_CHOICES, default='free')
 
     class Meta:
@@ -101,8 +110,11 @@ class Opportunity(models.Model):
     objects = models.Manager()
 
     # Custom made manager
-    published = PublishedManager()
+    approved = PublishedManager()
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Opportunity, self).save(*args, **kwargs)
 
 
     def get_absolute_url(self):

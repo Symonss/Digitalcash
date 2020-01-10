@@ -37,23 +37,26 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="{% url 'home'%}">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Opportunities</a>
+                        <a class="nav-link" href="#">Stories</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">About</a>
                     </li>
+                    <!-- Dropdown -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Opportunities
+                        </a>
+                        <div class="dropdown-menu bg-dark">
+
+                            {% for c in categories %}
+                            <a class="dropdown-item nav-link" href="#">{{c.title}}</a>
+                            {% endfor %}
                         </div>
                     </li>
                 </ul>
@@ -137,6 +140,9 @@
     <script>
         window.onload = function () { if (window.jQuery) { $(document).ready(function () { $(".sidebarNavigation .navbar-collapse").hide().clone().appendTo("body").removeAttr("class").addClass("sideMenu").show(); $("body").append("<div class='overlay'></div>"); $(".navbar-toggle, .navbar-toggler").on("click", function () { $(".sideMenu").addClass($(".sidebarNavigation").attr("data-sidebarClass")); $(".sideMenu, .overlay").toggleClass("open"); $(".overlay").on("click", function () { $(this).removeClass("open"); $(".sideMenu").removeClass("open") }) }); $("body").on("click", ".sideMenu.open .nav-item", function () { if (!$(this).hasClass("dropdown")) { $(".sideMenu, .overlay").toggleClass("open") } }); $(window).resize(function () { if ($(".navbar-toggler").is(":hidden")) { $(".sideMenu, .overlay").hide() } else { $(".sideMenu, .overlay").show() } }) }) } else { console.log("sidebarNavigation Requires jQuery") } }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
