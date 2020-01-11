@@ -148,3 +148,6 @@ CKEDITOR_CONFIGS = {
 }
  
 ###################################
+
+LOGIN_REDIRECT_URL = 'admins'
+LOGOUT_REDIRECT_URL = 'home'

@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.conf.urls import url
 from django.urls import path, include
 from django.conf import settings
+from mainapp import views
 from django.conf.urls.static import static
 from django.views.static import serve
 
@@ -10,6 +11,9 @@ urlpatterns = [
     path('', include('mainapp.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    path('me/signup/', views.SignUp.as_view(), name='signup'),
 ]
 
 if settings.DEBUG:

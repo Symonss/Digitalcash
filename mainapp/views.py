@@ -1,12 +1,23 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Post, Category, Opportunity
+from .models import Post, Category, Opportunity, User
 from django.http import HttpResponse
 from django.views import View
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 from django.contrib import messages
 from .forms import OppUpdateForm
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+from django.contrib.auth.decorators import login_required
+
+
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
+
 
 def home(request):
     opps = Opportunity.approved.all()
@@ -53,6 +64,7 @@ def post_list(request):
         posts = paginator.page(paginator.num_pages)
     return render(request, 'post_list.html', {'posts': posts})
 
+@login_required
 def administration(request):
     opps = Opportunity.objects.all().filter(status = 'inreview')
     stories = Post.objects.all().filter(status = 'inreview')

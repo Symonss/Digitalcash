@@ -6,6 +6,12 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.html import mark_safe
 from markdown import markdown
 from django.utils.text import slugify
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+
+
+# class User(AbstractUser):
+#     phone = models.IntegerField()
 
 
 class Category(models.Model):

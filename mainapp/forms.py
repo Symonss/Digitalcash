@@ -1,6 +1,9 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.db import transaction
+from mainapp.models import Opportunity, User
 
-from mainapp.models import Opportunity
+
 
 
 class OppUpdateForm(forms.ModelForm):
