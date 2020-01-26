@@ -28,6 +28,9 @@ def home(request):
     }
     return render(request, 'index.html', context)
 
+def crowed1(request):
+    return render(request, 'crowed1.html',{})
+
 def post_detail_view(request, post):
     post = get_object_or_404(Post, slug=post, status='published')
     recent = Post.published.all()[:5]

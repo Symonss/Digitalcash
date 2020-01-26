@@ -7,6 +7,7 @@ from django.views.static import serve
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('crowed1', views.crowed1, name = 'crowed1'),
     path('opportunities', views.post_list, name='opportunities_list'),
     url(r'^opportunities/(?P<opp>[-\w]+)/$', views.opportunity_detail_view, name='opportunity_detail_view'),
     url(r'^stories/(?P<post>[-\w]+)/$', views.post_detail_view, name='story_detail_view'),
