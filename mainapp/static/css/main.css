@@ -6,7 +6,7 @@
 	transform:rotate(360deg);
 }
 .offer{
-	background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+	background:#fff;   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 5px 0; overflow:hidden;
 }
 .offer:hover {
     -webkit-transform: scale(1.1); 
@@ -486,10 +486,7 @@ h2{float:left; width:100%; color:#fff; margin-bottom:40px; font-size: 14px; posi
 h2 span{font-family: 'Libre Baskerville', serif; display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px; font-weight:700}
 h2 a{color:#fff; font-weight:bold;}
 
-body{background: #24C6DC;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #514A9D, #24C6DC);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #514A9D, #24C6DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+
 .head{float:left;width:100%;}
 .search-box{width:95%; margin:0 auto 40px; box-shadow:20px 20px 0 rgba(0,0,0,0.2);}
 .listing-block{background:#fff; height:500px; padding-top:20px; overflow-y:scroll;}

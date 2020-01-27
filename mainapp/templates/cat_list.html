@@ -1,0 +1,49 @@
+{% extends "base.html"%}
+
+{% block body %}
+<br>
+<div class="container">
+    <div class="row">
+
+        {% for p in posts %}
+
+        <div class="col-xs-12 col-sm-6 ">
+            <div class="offer offer-default">
+
+                <div class="offer-content">
+
+                    <div class="firmalar">
+
+
+                        <div class="col-md-12">
+                            <div class="firma-card row" style="margin-bottom: 0px;">
+                                <div class="col-md-5 img-padding-no">
+                                    <div class="firma-resim" style="background-image: url({{p.img.url}});">
+                                        <a href="#">
+
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="firma-aciklama card-body">
+                                        <h4><a href="{{p.get_absolute_url}}"> {{p.title}}</a></h4>
+                                        <p>{{p.description}}</p>
+                                        <p><strong><i><a class="text-success" href="{{p.direct_link}}">Get
+                                                        Started</a></i></strong></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+<br>
+{% endblock body %}

@@ -32,7 +32,7 @@ def crowed1(request):
     return render(request, 'crowed1.html',{})
 
 def post_detail_view(request, post):
-    post = get_object_or_404(Post, slug=post, status='published')
+    post = get_object_or_404(Post, slug=post, status='published', )
     recent = Post.published.all()[:5]
     categories = Category.objects.all()
     context = {
@@ -55,8 +55,21 @@ def opportunity_detail_view(request, opp):
 
 
 
-def post_list(request):
-    list_objects = Post.published.all()
+# def post_list(request):
+#     list_objects = Post.approved.all()
+#     paginator = Paginator(list_objects, 10)
+#     page = request.GET.get('page')
+#     try:
+#         posts = paginator.page(page)
+#     except PageNotAnInteger:
+#         posts = paginator.page(1)
+#     except EmptyPage:
+#         posts = paginator.page(paginator.num_pages)
+#     return render(request, 'post_list.html', {'posts': posts})
+
+def category_list(request, pk):
+    list_objects = Opportunity.objects.all().filter(category=pk, status='approved')
+
     paginator = Paginator(list_objects, 10)
     page = request.GET.get('page')
     try:
@@ -65,7 +78,7 @@ def post_list(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    return render(request, 'post_list.html', {'posts': posts})
+    return render(request, 'cat_list.html', {'posts': posts})
 
 @login_required
 def administration(request):

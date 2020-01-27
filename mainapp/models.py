@@ -10,10 +10,6 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 
 
-# class User(AbstractUser):
-#     phone = models.IntegerField()
-
-
 class Category(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=250, unique=True)
@@ -30,6 +26,9 @@ class Category(models.Model):
     def get_total_posts(self):
         tt = Post.objects.filter(category = self.pk).count()
         return tt
+
+    def get_absolute_url(self):
+        return reverse('cat_list', args=[self.pk])
 
 
 # Custom Manager
