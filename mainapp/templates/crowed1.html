@@ -1,95 +1,10 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Crowd1 landing page</title>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153242443-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-153242443-2');
-  </script>
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="{% static 'vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-
-  <!-- Plugin CSS -->
-  <link rel="stylesheet" href="{% static 'device-mockups/device-mockups.min.css'%}">
-
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/new-age.min.css'%}" rel="stylesheet">
-
-</head>
+{% block body %}
 
 <body id="page-top">
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="http://247digitalcash4u.com">247digitalcash4u.com</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger " type="button" data-toggle="modal" data-target="#myModal"
-              href="http://247digitalcash4u.com">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Contact me </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <ul>
-            <li><strong>Email 1<span class="text-info"> embeke@gmail.com</span></strong></li>
-            <li><strong> Whatsapp:<span class="text-success"> 0722761562</span></strong></li>
-            <li><strong> Email 2:<span class="text-info"> info@247digitalcash4u.com</span></strong></li>
-          </ul>
-
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
 
 
   <header class="masthead">
@@ -111,7 +26,7 @@
         <div class="col-lg-5 my-auto">
           <div class="embed-responsive embed-responsive-16by9">
             <!-- https://www.youtube.com/embed/RJldai7YRik?autoplay=1 -->
-            <iframe width="660" height="415" src="https://www.youtube.com/embed/EAbVYvA8EzM?autoplay=1" frameborder="0"
+            <iframe width="660" height="415" src="https://www.youtube.com/embed/RJldai7YRik?autoplay=1" frameborder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div><br>
           <a href="http://crowd1.com/signup/digitalcash18" class="btn btn-outline btn-xl js-scroll-trigger">Get
@@ -151,7 +66,7 @@
     <div class="cta-content">
       <div class="container">
         <div class="row">
-          <div class="col-sm-4 text-white">
+          <div class="col-sm-4 text-white " style="background-color: rgba(0, 0, 0, 0.609);">
             <p>
 
               <h3>Run your business without limitations</h3>
@@ -167,7 +82,7 @@
               provide.
             </p>
           </div>
-          <div class="col-sm-4 text-white">
+          <div class="col-sm-4 text-white" style="background-color: rgba(0, 0, 0, 0.609);">
 
             <h3>Build a global online gambling network</h3>
             All Crowd1 members also have access to a unique profit sharing program, Owner Rights and several of the
@@ -200,26 +115,15 @@
     </div>
     <div class="overlay"></div>
   </section>
+  <hr>
+  <div class="container">
+    <script type="text/javascript" src="https://g.Cash-ADS.com/banner.php?uid=1533&e=0&p=0&s=0&size=1"></script>
+  </div>
+  <hr>
+  <div class="container">
+    <script type="text/javascript" src="https://g.Cash-ADS.com/banner.php?uid=1533&e=0&p=0&s=0&size=1"></script>
+  </div>
 
-
-
-  <footer>
-    <div class="container">
-      <p>&copy; All Rights Reserved. by <a href="https://omborisymons.com"> Omborisymons </a></p>
-
-    </div>
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-
-  <!-- Plugin JavaScript -->
-  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js'%}"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="{% static 'js/new-age.min.js'%}"></script>
 
 </body>
-
-</html>
+{% endblock body %}
